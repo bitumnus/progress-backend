@@ -4,7 +4,8 @@ import axios from 'axios';
 @Injectable()
 export class AppService {
   getList(): object {
-    const checkList = [
+    // throw new Error('Lalala');
+    return [
       {
         "name": "Section1",
         "toppic_id": 1,
@@ -57,9 +58,9 @@ export class AppService {
         ],
       },
     ];
-    return checkList;
   }
   async getRandom(): Promise<string> {
+    // throw new Error('Random Fail');
     const randomFact = await axios.get('https://uselessfacts.jsph.pl/random.json');
     return randomFact.data.text;
   }

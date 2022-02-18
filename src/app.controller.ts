@@ -6,12 +6,22 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('/getList')
-  getList(): object {
-    return this.appService.getList();
+  async getList(): Promise<object> {
+    try {
+      return this.appService.getList();
+    } catch (e) {
+      console.error('Error while get data');
+      return new Error('Load fail');
+    }
   }
 
   @Get('/getRandom')
   async getRandom(): Promise<string> {
-    return await this.appService.getRandom();
+    try {
+      return await this.appService.getRandom();
+    } catch (e) {
+      console.error('Error while get random');
+      return 'Fail get random';
+    }
   }
 }
